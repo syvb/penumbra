@@ -85,12 +85,14 @@ things like the base staking reward rate, the amount of penalty applied when sla
 properties that determine how the chain behaves. Many of these can be changed by parameter change
 proposals, but some cannot, and instead would require a chain halt and upgrade.
 
-A parameter change proposal specifies both the _old_ and the _new_ parameters. If the current set of
-parameters at the time the proposal passes are an _exact match_ for the old parameters specified in
-the proposal, the entire set of parameters is immediately set to the new parameters; otherwise,
-nothing happens. This is to prevent two simultaneous parameter change proposals from overwriting
-each others' changes or merging with one another into an undesired state. Almost always, the set of
-old parameters should be the current parameters at the time the proposal is submitted.
+A parameter change proposal can specify a list of preconditions, which specify the values of
+parameters. If the values of the preconditions are an _exact match_ for the current parameters at
+the time the proposal is applied, the set of changed parameters is immediately set to the new
+parameters; otherwise, nothing happens. If no preconditions are specified, the proposal is
+unconditionally applied. This is to prevent two simultaneous parameter change proposals from
+overwriting each others' changes or merging with one another into an undesired state. Almost
+always, the set of preconditions should be the relevant current parameters at the time the proposal
+is submitted.
 
 #### Community Pool Spend Proposals
 
